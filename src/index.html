@@ -10,7 +10,38 @@
 </head>
 
 <body>
-    <article id="container"></article>
+    <header class="navigation">
+        <div class="login_container">
+            <section class="login">
+                <a href="#">Create Account</a>
+                <input type="text" id="username" placeholder="username">
+                <input type="text" id="password" placeholder="password">
+                <button id="login">Log In</button>
+            </section>
+        </div>
+    </header>
+
+    <article class="main">
+        <div class=leftside_container>
+            <div class="task_container">
+                <section class="tasks"></section>
+            </div>
+        </div>
+        <div class=rightside_container>
+            <div class="article_container">
+                <section class="articles"></section>
+            </div>
+            <div class="events_container">
+                <section class="events"></section>
+            </div>
+        </div>
+        <div class="messages_container">
+            <section class="messages"></section>
+        </div>
+    </article>
+
+    <footer class="footer"></footer>
+    <script type="module" src="./scripts/main.js"></script>
 </body>
 
 </html>
