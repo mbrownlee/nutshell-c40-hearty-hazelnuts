@@ -12,16 +12,17 @@
 <body>
     <header class="navigation">
         <div class="login_container">
-            <section class="login">
-                <a href="#">Create Account</a>
+            <section class="login" id= "log_me_in">
+                <a href="#" id = createAccount>Create Account</a>
                 <input type="text" id="username" placeholder="username">
                 <input type="text" id="password" placeholder="password">
                 <button id="login">Log In</button>
+                <button id="logOut">Log Out</button>
             </section>
         </div>
     </header>
-
-    <article class="main">
+    <div id= createAccountForm></div>
+    <article id="dashboard" class="main">
         <div class=leftside_container>
             <div class="task_container">
                 <section class="tasks"></section>
