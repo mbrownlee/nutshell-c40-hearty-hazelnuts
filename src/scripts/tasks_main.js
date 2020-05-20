@@ -12,14 +12,23 @@ data.getTasks()
 
 // Click event handler for New Task, View Current, and View Completed, Remove, and Checkbox (mark as completed) btns
 taskSection.addEventListener('click', event => {
+
+    // Creates new task form if New Task btn clicked
     if (event.target.id === 'create-new-task') {
         dom.showNewTaskForm()
+    
+    // Shows current tasks if Current Tasks btn clicked
     } else if (event.target.id === 'view-current-tasks') {
         data.getTasks()
             .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
+
+    // Shows completed tasks if Completed Tasks clicked
     } else if (event.target.id ==='view-completed-tasks') {
         data.getTasks()
             .then(tasks => dom.showCompletedTasks(tasks.filter(task => task.userId == loggedUserId)))
+
+    // Saves tasks and shows current tasks if Submit Task btn clicked (inside create new task form)
+    // Does not allow empty strings as input
     } else if (event.target.id === 'submit-task') {
         event.preventDefault()
         if (document.getElementById('task-name').value === '' ||
@@ -42,16 +51,22 @@ taskSection.addEventListener('click', event => {
                     .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))        
             })
             }
+
+    // Discards input and shows current tasks if Discard Task btn clicked (inside create new task form)
     } else if (event.target.id === 'discard-task') {
         event.preventDefault()
         dom.removeNewTaskForm()
         dom.addTaskHeader()
         data.getTasks()   
             .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
+
+    // Deletes task if Delete btn clicked
     } else if (event.target.id.startsWith('delete-')) {
         data.deleteTask(event.target.id.split('-')[1])
             .then( () => data.getTasks())
             .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
+    
+    // Marks current task as completed and displays completed tasks if Completed checkbox is clicked
     } else if (event.target.id.startsWith('complete-')) {
         data.getTask(event.target.id.split('-')[1])
             .then(task => {
