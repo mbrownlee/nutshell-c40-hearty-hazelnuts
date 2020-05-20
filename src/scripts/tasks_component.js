@@ -32,9 +32,9 @@ const createNewTaskForm = () => {
 const createCurrentTask = (task) => {
     return `
     <section class="current_task" id="current-${task.id}">
-        <p>Name: ${task.title}</p>
-        <p>Description: ${task.description}</p>
-        <p>Complete By: ${task.compDate}</p>
+        <p contentEditable="true">Name: ${task.title}</p>
+        <p contentEditable="true">Description: ${task.description}</p>
+        <p contentEditable="true">Complete By: ${task.compDate}</p>
         <button id="delete-${task.id}">Remove</button>
         <input type="checkbox" id="complete-${task.id}" name="complete" value="complete-${task.id}">
         <label for="complete-${task.id}>Completed</label>
@@ -45,9 +45,9 @@ const createCurrentTask = (task) => {
 const createCompletedTask = (task) => {
     return `
     <section class="completed_task" id="completed-${task.id}">
-        <p>Name: ${task.title}</p>
-        <p>Description: ${task.description}</p>
-        <p>Completed On: ${task.compDate}</p>
+        <p contentEditable="true">Name: ${task.title}</p>
+        <p contentEditable="true">Description: ${task.description}</p>
+        <p contentEditable="true">Completed On: ${task.compDate}</p>
         <button id="delete-${task.id}>Remove</button>
     </section>
     `

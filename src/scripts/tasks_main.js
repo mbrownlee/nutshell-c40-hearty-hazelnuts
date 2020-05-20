@@ -22,6 +22,11 @@ taskSection.addEventListener('click', event => {
             .then(tasks => dom.showCompletedTasks(tasks))
     } else if (event.target.id === 'submit-task') {
         event.preventDefault()
+        if (document.getElementById('task-name').value === '' ||
+            document.getElementById('task-description').value === '' ||
+            document.getElementById('task-compDate').value === '') {
+                window.alert('Aren\'t you forgetting something?')
+            } else {
         let newTask = {
             "userId": loggedUserId,
             "title": document.getElementById('task-name').value,
@@ -36,6 +41,7 @@ taskSection.addEventListener('click', event => {
                 data.getTasks()   
                     .then(tasks => dom.showCurrentTasks(tasks))        
             })
+            }
     } else if (event.target.id === 'discard-task') {
         event.preventDefault()
         dom.removeNewTaskForm()
