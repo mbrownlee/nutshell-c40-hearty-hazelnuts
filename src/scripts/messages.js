@@ -60,13 +60,14 @@ function renderInitialSection() {
   <br>
   <input
             type="text"
-            name="conceptsCovered"
+            name="messageText"
             id="messageText"
             placeholder= "start typing"
           />
           <button id="message_send_btn" class="message_send_btn">send</button>
   </div>
-  </section>`;
+  </section>
+  `;
 }
 //---------------------calling the initial build for the messages section
 renderInitialSection();
@@ -99,9 +100,10 @@ sendButtonListener.addEventListener("click", (event) => {
     userMessageId,
     description
   );
-
+  document.querySelector("#messageText").value = "";
   API.saveMessageEntry(newMessageEntry).then(getAndRenderMesages());
 });
+
 // API.getMessages().then((data) => renderJournalEntries(data))
 
 // Factory Function to build a new message entry
@@ -111,6 +113,11 @@ const buildMessageComponent = (messageId, userMessageId, description) => ({
   description: description,
 });
 
+//Values need for editing the message
+const formMessageId = document.getElementById("entryId");
+const formMessageUserId = document.getElementById("date");
+const formDescription = document.getElementById("concept");
+
 // function to prepopulate the edit message form
 function prepopulateForm(message) {
   formId.value = message.id;
@@ -118,25 +125,35 @@ function prepopulateForm(message) {
   formDescription.value = message.description;
 }
 
+let editMessage = () => {
+  return `
+  <input
+            type="text"
+            name="messageText"
+            id="messageText"
+            placeholder= "start typing"
+          />
+          <button id="message_send_btn" class="message_send_btn">send</button>
+  `;
+};
+
 //Event Listners to work with Edit and Delete dynamically
 messageSection.addEventListener("click", (event) => {
   if (event.target.id.startsWith("edit--")) {
     const messageId = event.target.id.split("--")[1];
     API.getMessagesByID(messageId).then((message) => {
-      prepopulateForm(message);
+      let messageValue = message.description;
+      document.querySelector(".messageBody").innerHTML = `<input
+      type="text"
+      name="messageText"
+      id="messageText"
+      value= "${messageValue}"
+    />
+    <button id="message_saveEdit_btn" class="message_saveEdit_btn">save</button>`;
     });
   }
   if (event.target.id.startsWith("delete--")) {
     const messageId = event.target.id.split("--")[1];
     API.deleteMessage(messageId).then(getAndRenderMesages);
   }
-  // if (event.target.id.startsWith("send--")) {
-  //   const messageId = event.target.id.split("--")[1];
-  //   createMessage(messageId).then(getAndRenderMesages);
-  // }
 });
-
-// let messageId = currentMessageId++;
-// let userMessageId = currentUserId;
-
-// renderMessageToDOM(makeMessageTextBox())
