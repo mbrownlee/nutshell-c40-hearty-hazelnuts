@@ -1,9 +1,11 @@
 import userEvents from "./userEvents.js";
 import "./users.js";
 import users from "./users.js";
+import welcome from "./welcome.js"
+
+welcome.createWelcomeVideo()
 
 const loggedUserId = sessionStorage.getItem("loggedUser");
-console.log(loggedUserId);
 if (loggedUserId === null) {
   userEvents.welcome();
 } else {
