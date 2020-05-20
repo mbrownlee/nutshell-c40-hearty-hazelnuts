@@ -28,7 +28,7 @@ taskSection.addEventListener('click', event => {
                 window.alert('Aren\'t you forgetting something?')
             } else {
         let newTask = {
-            "userId": loggedUserId,
+            "userId": parseInt(loggedUserId, 10),
             "title": document.getElementById('task-name').value,
             "description": document.getElementById('task-description').value,
             "compDate": document.getElementById('task-compDate').value,
