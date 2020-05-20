@@ -2,13 +2,13 @@ import data from './tasks_api.js'
 import dom from './tasks_dom.js'
 
 // placeholder for session stored user ID, need to change later
-const loggedUserId = 1;
+const loggedUserId = sessionStorage.getItem("loggedUser");
 const taskSection = document.querySelector('.tasks')
 
 // Displays initial tasks box with header and current tasks
 dom.addTaskHeader()
 data.getTasks()
-    .then(tasks => dom.showCurrentTasks(tasks))
+    .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
 
 // Click event handler for New Task, View Current, and View Completed, Remove, and Checkbox (mark as completed) btns
 taskSection.addEventListener('click', event => {
@@ -16,10 +16,10 @@ taskSection.addEventListener('click', event => {
         dom.showNewTaskForm()
     } else if (event.target.id === 'view-current-tasks') {
         data.getTasks()
-            .then(tasks => dom.showCurrentTasks(tasks))
+            .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
     } else if (event.target.id ==='view-completed-tasks') {
         data.getTasks()
-            .then(tasks => dom.showCompletedTasks(tasks))
+            .then(tasks => dom.showCompletedTasks(tasks.filter(task => task.userId == loggedUserId)))
     } else if (event.target.id === 'submit-task') {
         event.preventDefault()
         if (document.getElementById('task-name').value === '' ||
@@ -39,7 +39,7 @@ taskSection.addEventListener('click', event => {
                 dom.removeNewTaskForm()
                 dom.addTaskHeader()
                 data.getTasks()   
-                    .then(tasks => dom.showCurrentTasks(tasks))        
+                    .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))        
             })
             }
     } else if (event.target.id === 'discard-task') {
@@ -47,11 +47,11 @@ taskSection.addEventListener('click', event => {
         dom.removeNewTaskForm()
         dom.addTaskHeader()
         data.getTasks()   
-            .then(tasks => dom.showCurrentTasks(tasks))
+            .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
     } else if (event.target.id.startsWith('delete-')) {
         data.deleteTask(event.target.id.split('-')[1])
             .then( () => data.getTasks())
-            .then(tasks => dom.showCurrentTasks(tasks))
+            .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
     } else if (event.target.id.startsWith('complete-')) {
         data.getTask(event.target.id.split('-')[1])
             .then(task => {
@@ -65,7 +65,7 @@ taskSection.addEventListener('click', event => {
                 }
                 data.editTask(completed, task.id)
                 .then( () => data.getTasks())
-                .then(tasks => dom.showCompletedTasks(tasks))
+                .then(tasks => dom.showCompletedTasks(tasks.filter(task => task.userId == loggedUserId)))
             })
     }
 })
