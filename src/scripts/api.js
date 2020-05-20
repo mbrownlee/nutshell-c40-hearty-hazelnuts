@@ -14,6 +14,11 @@ const API = {
       data.json()
     );
   },
+      getUsers() {
+        return fetch(`http://localhost:3000/users`).then((data) =>
+          data.json()
+        )
+      },
   getNews (){
     return fetch(`http://localhost:3000/news`).then((data)=>
     data.json()

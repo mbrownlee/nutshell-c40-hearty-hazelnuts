@@ -23,6 +23,7 @@ loginContainer.addEventListener("click", (event) => {
     createLoginContainer.innerHTML = users.renderLogin();
   } else if (targetElement.id == "logOut") {
     sessionStorage.clear();
+    location.reload();
   } else if (targetElement.id == "login") {
     if (usernameInput.value === "" || passwordInput.value === "") {
       window.alert("Fill out username and password fields");
@@ -51,7 +52,6 @@ createLoginContainer.addEventListener("click", (event) => {
   const createUsername = document.getElementById("createUsername");
   const createPassword = document.getElementById("createPassword");
   const createEmail = document.getElementById("createEmail");
-
   event.preventDefault();
   let targetElement = event.target;
   function clearForm() {
@@ -59,35 +59,37 @@ createLoginContainer.addEventListener("click", (event) => {
     createEmail.value = "";
     createPassword.value = "";
   }
+
   const userValues = {
     username: createUsername.value,
     email: createEmail.value,
     password: createPassword.value,
   };
   if (targetElement.id == "createUserBtn") {
-    if (
-      createUsername.value === "" ||
-      createPassword.value === "" ||
-      createEmail.value === ""
-    ) {
-      window.alert("Please fill out all fields");
-    } else {
-      API.getUser(createUsername.value).then((user) => {
-        if (user.length < 1) {
-          API.createUser(userValues).then((newUser) => {
-            sessionStorage.setItem("loggedUser", newUser.id);
-            dashboardContainer.innerHTML = "";
-            console.log("entry created");
-            createLoginContainer.style.visibility = "hidden";
-            window.alert("Your account has been created!");
-          });
-        } else {
-          clearForm();
-          window.alert("User already exists");
-          event.stopPropagation();
-        }
-      });
-    }
+    API.getUsers().then((users) => {
+      if (users.find((user) => user.email === createEmail.value)) {
+        window.alert("Email Already In Use!!!");
+      } else if (users.find((user) => user.username === createUsername.value)) {
+        window.alert("Username Already Used");
+      } else if (
+        createUsername.value === "" ||
+        createPassword.value === "" ||
+        createEmail.value === ""
+      ) {
+        window.alert("Please fill out all fields");
+      } else if (
+        !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(createEmail.value)
+      ) {
+        window.alert("Please Enter a Valid Email Address");
+      } else {
+        API.createUser(userValues).then((newUser) => {
+          sessionStorage.setItem("loggedUser", newUser.id);
+          console.log("entry created");
+          createLoginContainer.style.visibility = "hidden";
+          window.alert("Your account has been created!");
+        });
+      }
+    });
   }
 });
 
