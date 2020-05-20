@@ -12,6 +12,17 @@ const eventsContainer = document.querySelector(".eventListContainer")
 
 
     }
+    const eventFormContainer = document.querySelector(".eventFormContainer")
+    eventFormContainer.addEventListener("click", (event) => {
+        if(event.target.id==="saveButton") {
+           const eventSaveObj = {
+               date: document.querySelector("#eventDate").value,
+               event: document.querySelector("#eventDescription").value,
+               location: document.querySelector("#eventLocation").value
+            }
+            API.createNewEvent(eventSaveObj)
+        }
+    })
 
 API.getEvents().then(eventsToDom)
 
@@ -19,14 +30,14 @@ const formContainer = document.querySelector(".eventFormContainer")
 
 const eventEdit = id => {
     const eventEditObj = {
-       date: document.querySelector(".date_value").value,
-       event: document.querySelector(".event_value").value,
-       location: document.querySelector(".location_value").value
+        date: document.querySelector("#eventDate").value,
+        event: document.querySelector("#eventDescription").value,
+        location: document.querySelector("#eventLocation").value
     }
 
     API.editEvents(eventEditObj, id)
-       .then(() => (document.getElementById("entryId").value = ""))
-       .then(() =>API.getJournalEntries().then(renderToDom))
+       .then(() => (document.getElementById("#eventId").value = ""))  
+       .then(() =>API.getAndRenderAllEvents) //put in eventsList
        
     }
 /*
@@ -56,32 +67,6 @@ formContainer.addEventListener("click", () => {
 }) */
 
 
-    function clearForm() {
-        eventDateInput.value = ""
-        eventInput.value = ""
-        entryLocationInput.value = ""
-        
-      }
-
-const eventContainer = document.querySelector(".eventListContainer")
-
-eventContainer.addEventListener("click", (event) => {
     
-        if (event.target.id.startsWith("edit--")) {
-          const eventEditId = event.target.id.split("--")[1]
-          
-            repopulateForm(eventEditId) 
 
-            } if (event.target.id.startsWith("delete--")) {
-             const eventId = event.target.id.split("--")[1]
-             API.deleteEvents(eventId)
-    
-             .then(getAndRenderAllEvents)
-     }
-   
-
-
-   
-}
-)
 export default {eventsToDom, eventEdit}
