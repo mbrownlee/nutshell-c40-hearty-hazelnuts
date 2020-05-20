@@ -1,3 +1,4 @@
+import "./tasks_main.js";
 import userEvents from "./userEvents.js";
 import "./users.js";
 import "./messages.js";
