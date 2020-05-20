@@ -1,0 +1,30 @@
+.messagesContainer {
+  background-color: white;
+  border: solid black 2px;
+  padding: 8px;
+}
+
+.userMessage {
+  text-align: center;
+  background-color: blue;
+  color: white;
+  font-family: Helvetica Neue;
+  padding: 5px;
+  margin: 10px;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 35px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.messageText {
+  text-align: center;
+  width: 100%;
+}

@@ -9,5 +9,4 @@ if (loggedUserId === null) {
   userEvents.welcome();
 } else {
   const dashboardContainer = document.getElementById("dashboard");
-  dashboardContainer.innerHTML = "";
 }

@@ -1,5 +1,5 @@
 //Fetching the messages from the database
-const loggedUserId = 1;
+const loggedUserId = sessionStorage.getItem("loggedUser");
 
 const API = {
   getMessages() {
@@ -39,14 +39,17 @@ const API = {
 
 //Defining Messages Section in index.html
 const messageSection = document.querySelector(".messages");
-
 //making a message from the fetch call
 const makeMessageComponent = (messageData) => {
   return `
   <section class="userMessage">
-  <input type="hidden" id="message" value="${messageData.id}" /> 
-  <div class="messageUserName">${messageData.user.username}</div>
-  <div class="messageBody">${messageData.description}</div>
+  <input type="hidden" id="message--${messageData.id}" value="${messageData.description}" /> 
+  <div class="hidden editMessage--${messageData.id}">
+    <input value="${messageData.description}" />
+    <button id="message_saveEdit_btn">save</button> 
+  </div>
+  <div id="messageBody--${messageData.id}">${messageData.description}</div>
+  <div class="messageUserName">-${messageData.user.username}</div>
   <button id="edit--${messageData.id}" class="message_edit_btn">edit</button>
   <button id="delete--${messageData.id}" class="message_delete_btn">delete</button>
   </section>`;
@@ -62,6 +65,7 @@ function renderInitialSection() {
             type="text"
             name="messageText"
             id="messageText"
+            class="messageText"
             placeholder= "start typing"
           />
           <button id="message_send_btn" class="message_send_btn">send</button>
@@ -141,19 +145,20 @@ let editMessage = () => {
 messageSection.addEventListener("click", (event) => {
   if (event.target.id.startsWith("edit--")) {
     const messageId = event.target.id.split("--")[1];
-    API.getMessagesByID(messageId).then((message) => {
-      let messageValue = message.description;
-      document.querySelector(".messageBody").innerHTML = `<input
-      type="text"
-      name="messageText"
-      id="messageText"
-      value= "${messageValue}"
-    />
-    <button id="message_saveEdit_btn" class="message_saveEdit_btn">save</button>`;
-    });
+    API.getMessagesByID(messageId).then((message) => {});
   }
   if (event.target.id.startsWith("delete--")) {
     const messageId = event.target.id.split("--")[1];
     API.deleteMessage(messageId).then(getAndRenderMesages);
+  }
+});
+
+messageSection.addEventListener("click", (event) => {
+  if (event.target.id.startsWith("edit--")) {
+    const editBtnId = event.target.id.split("--")[1];
+    document
+      .querySelector(`.editMessage--${editBtnId}`)
+      .classList.remove("hidden");
+    // document.querySelector(".visible").style.visibility = "hidden";
   }
 });

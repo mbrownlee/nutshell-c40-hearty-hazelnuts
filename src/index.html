@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/messages.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="navigation">
-        <div class="login_container">
-            <section class="login" id= "log_me_in">
-                <a href="#" id = createAccount>Create Account</a>
-                <input type="text" id="username" placeholder="username">
-                <input type="text" id="password" placeholder="password">
-                <button id="login">Log In</button>
-                <button id="logOut">Log Out</button>
-            </section>
-        </div>
+      <div class="login_container">
+        <section class="login" id="log_me_in">
+          <a href="#" id="createAccount">Create Account</a>
+          <input type="text" id="username" placeholder="username" />
+          <input type="text" id="password" placeholder="password" />
+          <button id="login">Log In</button>
+          <button id="logOut">Log Out</button>
+        </section>
+      </div>
     </header>
-    <div id= createAccountForm></div>
+    <div id="createAccountForm"></div>
     <article id="dashboard" class="main">
-        <div class=leftside_container>
-            <div class="task_container">
-                <section class="tasks"></section>
-            </div>
+      <div class="leftside_container">
+        <div class="task_container">
+          <section class="tasks"></section>
         </div>
-        <div class=rightside_container>
-            <div class="article_container">
-                <section class="articles"></section>
-            </div>
-            <div class="events_container">
-                <section class="events"></section>
-            </div>
+      </div>
+      <div class="rightside_container">
+        <div class="article_container">
+          <section class="articles"></section>
         </div>
-        <div class="messages_container">
-            <section class="messages"></section>
+        <div class="events_container">
+          <section class="events"></section>
         </div>
+      </div>
+      <div class="messages_container">
+        <section class="messages"></section>
+      </div>
     </article>
 
     <footer class="footer"></footer>
     <script type="module" src="./scripts/main.js"></script>
-</body>
-
+  </body>
 </html>
