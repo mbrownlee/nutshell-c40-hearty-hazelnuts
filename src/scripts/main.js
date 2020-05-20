@@ -1,5 +1,5 @@
+import './tasks_main.js'
 import userEvents from "./userEvents.js";
-import "./users.js";
 import users from "./users.js";
 import welcome from "./welcome.js"
 
@@ -10,5 +10,4 @@ if (loggedUserId === null) {
   userEvents.welcome();
 } else {
   const dashboardContainer = document.getElementById("dashboard");
-  dashboardContainer.innerHTML = "";
 }
