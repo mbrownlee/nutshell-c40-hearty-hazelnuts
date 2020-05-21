@@ -1,5 +1,5 @@
 //Fetching the messages from the database
-const loggedUserId = sessionStorage.getItem("loggedUser");
+const loggedUserId = +sessionStorage.getItem("loggedUser");
 
 const API = {
   getMessages() {
