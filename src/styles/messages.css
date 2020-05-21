@@ -28,3 +28,7 @@
   text-align: center;
   width: 100%;
 }
+
+.buttonsHidden {
+  visibility: hidden;
+}

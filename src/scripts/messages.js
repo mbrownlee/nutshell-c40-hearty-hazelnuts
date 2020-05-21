@@ -44,13 +44,14 @@ const makeMessageComponent = (messageData) => {
   return `
   <section class="userMessage">
   <input type="hidden" id="message--${messageData.id}" value="${messageData.description}" /> 
+  <input type="hidden" id="userId--${messageData.userId}"/> 
   <div class="hidden editMessage--${messageData.id}">
     <input id="messageDescription--${messageData.id}" value="${messageData.description}"/>
     <button id="message_saveEdit_btn--${messageData.id}">save</button> 
   </div>
   <div id="messageBody--${messageData.id}">${messageData.description}</div>
   <div class="messageUserName">-${messageData.user.username}</div>
-  <div id="crudButtons--${messageData.id}">
+  <div class="buttonsHidden">
     <button id="edit--${messageData.id}" class="message_edit_btn">edit</button>
     <button id="delete--${messageData.id}" class="message_delete_btn">delete</button>
   </div>
@@ -89,7 +90,9 @@ let messageId = "";
 const getAndRenderMesages = () => {
   databaseMessageContainer.innerHTML = "";
   API.getMessages().then((message) => {
-    message.map(makeMessageComponent).forEach(renderMessageToDOM);
+    message.map(makeMessageComponent).forEach((item) => {
+      renderMessageToDOM(item);
+    });
   });
 };
 
@@ -183,10 +186,8 @@ messageSection.addEventListener("click", (event) => {
   }
 });
 
-const hideCrudButtons = (message) => {
-  if (loggedUserId != messageData.user.username) {
-    document
-      .querySelector(`#crudButtons--${messageId}`)
-      .classList.add("hidden");
-  }
+const showCrudButton = () => {
+  API.getMessages().then((message) => {});
 };
+
+showCrudButton();
