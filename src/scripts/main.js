@@ -3,6 +3,7 @@ import makeEventsForm from "./eventsForm.js"
 import tasks from './tasks_main.js'
 import "./userEvents.js"
 import welcome from "./welcome.js"
+import "./messages.js";
 
 const loggedUserId = sessionStorage.getItem("loggedUser");
 if (loggedUserId === null) {
