@@ -1,13 +1,13 @@
 const createNewsHeader = () => {
     return`
-    <header class="news_header">
+    <header class="news_header">YOUR NEWS ARTICLES
         <button id="addNews">Add News Article</button>
     </header>`
 }
 const createCurrentNews = (news) => {
     return`
     <section class="current_news" id = "news-${news.id}">
-    <h1>${news.title}</h1}
+    <h1>${news.title}</h1>
     <p>${news.description}</p>
     <p>${news.url}</p>
     <p>${news.synopsis}</p>
@@ -33,8 +33,8 @@ const createAddNewsForm = () => {
                 <label for ="news-timestamp">Time:</label>
                 <input type="datetime" name="news-timestamp">
             </fieldset>
-            <button id="submit-task">Create</button>
-            <button id="discard-task">Discard</button>
+            <button id="submit-news">Create</button>
+            <button id="discard-news">Discard</button>
         </form>
     </section>`
 }

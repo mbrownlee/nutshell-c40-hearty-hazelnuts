@@ -1,4 +1,5 @@
 import './tasks_main.js'
+import "./news_main.js"
 import userEvents from "./userEvents.js";
 import users from "./users.js";
 
