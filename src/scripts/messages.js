@@ -41,6 +41,7 @@ const API = {
 const messageSection = document.querySelector(".messages");
 //making a message from the fetch call
 const makeMessageComponent = (messageData) => {
+  let editButton = showCrudButton(messageData);
   return `
   <section class="userMessage">
   <input type="hidden" id="message--${messageData.id}" value="${messageData.description}" /> 
@@ -51,10 +52,7 @@ const makeMessageComponent = (messageData) => {
   </div>
   <div id="messageBody--${messageData.id}">${messageData.description}</div>
   <div class="messageUserName">-${messageData.user.username}</div>
-  <div class="buttonsHidden">
-    <button id="edit--${messageData.id}" class="message_edit_btn">edit</button>
-    <button id="delete--${messageData.id}" class="message_delete_btn">delete</button>
-  </div>
+  ${editButton}
   </section>`;
 };
 
@@ -89,8 +87,8 @@ function renderMessageToDOM(htmlMessage) {
 let messageId = "";
 const getAndRenderMesages = () => {
   databaseMessageContainer.innerHTML = "";
-  API.getMessages().then((message) => {
-    message.map(makeMessageComponent).forEach((item) => {
+  API.getMessages().then((messages) => {
+    messages.map(makeMessageComponent).forEach((item) => {
       renderMessageToDOM(item);
     });
   });
@@ -105,9 +103,9 @@ sendButtonListener.addEventListener("click", (event) => {
   let userMessageId = loggedUserId;
   let description = document.querySelector("#messageText").value;
   let newMessageEntry = buildMessageComponent(
+    messageId,
     userMessageId,
-    description,
-    messageId
+    description
   );
   document.querySelector("#messageText").value = "";
   API.saveMessageEntry(newMessageEntry).then(getAndRenderMesages());
@@ -186,8 +184,14 @@ messageSection.addEventListener("click", (event) => {
   }
 });
 
-const showCrudButton = () => {
-  API.getMessages().then((message) => {});
+const showCrudButton = (message) => {
+  if (loggedUserId == message.userId) {
+    return `
+    <div class="">
+    <button id="edit--${message.id}" class="message_edit_btn">edit</button>
+    <button id="delete--${message.id}" class="message_delete_btn">delete</button>
+    </div>`;
+  } else {
+    return "";
+  }
 };
-
-showCrudButton();
