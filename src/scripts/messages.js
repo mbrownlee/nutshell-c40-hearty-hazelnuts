@@ -45,13 +45,15 @@ const makeMessageComponent = (messageData) => {
   <section class="userMessage">
   <input type="hidden" id="message--${messageData.id}" value="${messageData.description}" /> 
   <div class="hidden editMessage--${messageData.id}">
-    <input value="${messageData.description}" />
-    <button id="message_saveEdit_btn">save</button> 
+    <input id="messageDescription--${messageData.id}" value="${messageData.description}"/>
+    <button id="message_saveEdit_btn--${messageData.id}">save</button> 
   </div>
   <div id="messageBody--${messageData.id}">${messageData.description}</div>
   <div class="messageUserName">-${messageData.user.username}</div>
-  <button id="edit--${messageData.id}" class="message_edit_btn">edit</button>
-  <button id="delete--${messageData.id}" class="message_delete_btn">delete</button>
+  <div id="crudButtons--${messageData.id}">
+    <button id="edit--${messageData.id}" class="message_edit_btn">edit</button>
+    <button id="delete--${messageData.id}" class="message_delete_btn">delete</button>
+  </div>
   </section>`;
 };
 
@@ -100,9 +102,9 @@ sendButtonListener.addEventListener("click", (event) => {
   let userMessageId = loggedUserId;
   let description = document.querySelector("#messageText").value;
   let newMessageEntry = buildMessageComponent(
-    messageId,
     userMessageId,
-    description
+    description,
+    messageId
   );
   document.querySelector("#messageText").value = "";
   API.saveMessageEntry(newMessageEntry).then(getAndRenderMesages());
@@ -159,6 +161,32 @@ messageSection.addEventListener("click", (event) => {
     document
       .querySelector(`.editMessage--${editBtnId}`)
       .classList.remove("hidden");
-    // document.querySelector(".visible").style.visibility = "hidden";
+    document
+      .querySelector(`#messageBody--${editBtnId}`)
+      .classList.add("hidden");
   }
 });
+
+messageSection.addEventListener("click", (event) => {
+  if (event.target.id.startsWith("message_saveEdit_btn--")) {
+    const editBtnId = event.target.id.split("--")[1];
+    let newMessageDescription = document.querySelector(
+      `#messageDescription--${editBtnId}`
+    ).value;
+    const updatedMessageObject = {
+      userId: loggedUserId,
+      description: newMessageDescription,
+    };
+    API.updateMessage(updatedMessageObject, editBtnId).then(
+      getAndRenderMesages
+    );
+  }
+});
+
+const hideCrudButtons = (message) => {
+  if (loggedUserId != messageData.user.username) {
+    document
+      .querySelector(`#crudButtons--${messageId}`)
+      .classList.add("hidden");
+  }
+};
