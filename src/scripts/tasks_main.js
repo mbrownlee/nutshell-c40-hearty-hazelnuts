@@ -6,9 +6,11 @@ const loggedUserId = sessionStorage.getItem("loggedUser");
 const taskSection = document.querySelector('.tasks')
 
 // Displays initial tasks box with header and current tasks
-dom.addTaskHeader()
-data.getTasks()
-    .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
+const tasks = () => {
+    dom.addTaskHeader()
+    data.getTasks()
+        .then(tasks => dom.showCurrentTasks(tasks.filter(task => task.userId == loggedUserId)))
+}
 
 // Click event handler for New Task, View Current, and View Completed, Remove, and Checkbox (mark as completed) btns
 taskSection.addEventListener('click', event => {
@@ -84,3 +86,5 @@ taskSection.addEventListener('click', event => {
             })
     }
 })
+
+export default { tasks }

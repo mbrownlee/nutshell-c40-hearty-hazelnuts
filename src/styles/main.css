@@ -1,5 +1,2 @@
-<<<<<<< HEAD
-@import 'welcome.css'
-=======
-@import url('tasks.css');
->>>>>>> master
+@import 'welcome.css';
+@import 'tasks.css';

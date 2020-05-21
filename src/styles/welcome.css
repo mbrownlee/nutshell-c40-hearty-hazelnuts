@@ -1,16 +1,33 @@
-#welcome-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-  }
+/* SUGGESTIONS FOR MAIN.CSS
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5rem;
+} 
+
+*/
+
+.video_container {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 
 .navigation {
-    position: relative;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 25vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation, #createAccountForm, .main, .footer {
+  position: relative;
 }

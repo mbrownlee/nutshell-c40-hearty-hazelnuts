@@ -7,11 +7,6 @@ const createLogin = document.getElementById("createAccount");
 const loginBtn = document.getElementById("login");
 const loginContainer = document.getElementById("log_me_in");
 
-const welcome = () => {
-  const displayWelcome = users.createWelcome();
-  users.renderWelcome(displayWelcome);
-};
-
 //Event Listener for Login
 loginContainer.addEventListener("click", (event) => {
   event.preventDefault();
@@ -39,6 +34,7 @@ loginContainer.addEventListener("click", (event) => {
           let loggedUser = sessionStorage.getItem(`loggedUser`);
           console.log("Session Stored", loggedUser);
           dashboardContainer.innerHTML = "";
+          location.reload();  
         } else {
           clearForm();
           window.alert("Username and password do not match");
@@ -92,5 +88,3 @@ createLoginContainer.addEventListener("click", (event) => {
     });
   }
 });
-
-export default { welcome };
