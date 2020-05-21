@@ -1,3 +1,5 @@
+import getAndRenderAllEvents from "./eventList.js";
+import makeEventsForm from "./eventsForm.js";
 import "./tasks_main.js";
 import userEvents from "./userEvents.js";
 import "./users.js";
@@ -11,3 +13,10 @@ if (loggedUserId === null) {
 } else {
   const dashboardContainer = document.getElementById("dashboard");
 }
+
+const blankForm = makeEventsForm();
+
+const eventBox = document.querySelector(".eventFormContainer");
+eventBox.innerHTML = blankForm;
+
+getAndRenderAllEvents();
