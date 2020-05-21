@@ -4,4 +4,5 @@ What I've done:
 2. Consolidated main.js else statement to include everyone's main functions (that create the user's login page)
 3. Added location.reload() to userEvents.js line 37 so page will reload and display user's login page after login button is clicked
 4. Added CSS to welcome page
-5. Added suggested CSS to main page (in comments to be approved by team)
+5. Added more text to the welcome component function
+6. Added some suggested CSS to main page (in comments to be approved by team)

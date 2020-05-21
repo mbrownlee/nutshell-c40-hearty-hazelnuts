@@ -10,8 +10,9 @@ const createWelcomeVideo = () => {
 
 const createWelcome = () => {
     return `
-    <h1 class="welcome_header">Welcome to Nutshell!</h1>
-    <h2 class="welcome_subheader">Please log in above.</h2>
+    <h1 class="welcome_header">🌰 Welcome to Nutshell 🌰</h1>
+    <h2 class="welcome_subheader">Please log in above</h2>
+    <p class="welcome_footer">created by michelle mclane, tom strother, brian cravens, & zach nicholson</p>
     `
 }
 

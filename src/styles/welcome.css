@@ -1,16 +1,3 @@
-/* SUGGESTIONS FOR MAIN.CSS
-
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  line-height: 1.5rem;
-} 
-
-*/
-
 .video_container {
   object-fit: cover;
   width: 100vw;
@@ -22,7 +9,6 @@ body {
 
 .navigation {
   height: 25vh;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,4 +16,26 @@ body {
 
 .navigation, #createAccountForm, .main, .footer {
   position: relative;
+}
+
+.welcome_header, .welcome_subheader {
+  all: unset;
+  display: block;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.welcome_header {
+  font-size: 1.5em;
+  padding-bottom: .5em;
+}
+
+.welcome_subheader {
+  font-size: 1.1em;
+}
+
+.welcome_footer {
+  text-align: center;
+  text-transform: lowercase;
+  padding-top: .3em;
 }

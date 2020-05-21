@@ -6,7 +6,6 @@ import welcome from "./welcome.js"
 
 const loggedUserId = sessionStorage.getItem("loggedUser");
 if (loggedUserId === null) {
-  console.log(loggedUserId)
   welcome.welcome();
 } else {
   // rendering tasks
