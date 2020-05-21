@@ -4,7 +4,6 @@ import makeEventEntry from "./eventsRender.js";
 const events_container = document.querySelector(".eventListContainer");
 
 function getAndRenderAllEvents() {
-    debugger;
   events_container.innerHTML = "";
   API.getEvents().then((parsedEvents) => {
     parsedEvents.forEach((event) => {
