@@ -108,7 +108,7 @@ sendButtonListener.addEventListener("click", (event) => {
     description
   );
   document.querySelector("#messageText").value = "";
-  API.saveMessageEntry(newMessageEntry).then(getAndRenderMesages());
+  API.saveMessageEntry(newMessageEntry).then(getAndRenderMesages);
 });
 
 // API.getMessages().then((data) => renderJournalEntries(data))
