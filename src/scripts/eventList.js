@@ -1,11 +1,10 @@
 import API from "./eventsFetch.js";
 import makeEventEntry from "./eventsRender.js";
 
-
-
 const events_container = document.querySelector(".eventListContainer");
 
 function getAndRenderAllEvents() {
+    debugger;
   events_container.innerHTML = "";
   API.getEvents().then((parsedEvents) => {
     parsedEvents.forEach((event) => {
@@ -15,31 +14,16 @@ function getAndRenderAllEvents() {
   });
 }
 
-//  const hiddenEventId = document.querySelector("#entryId")
-//  const eventDate = document.querySelector("#eventDate")
-//  const eventBody = document.querySelector("#eventDescription")
-//  const eventLocation =  document.querySelector("#eventLocation")
-
-
-   
-const repopulateForm = eventId => {
-    
-    fetch(`http://localhost:3000/events/${eventId}`)
-    .then(events => events.json())
-    .then(event => {
-        document.querySelector("#eventId").value = event.id,
-        document.querySelector("#eventDate").value = event.date,
-        document.querySelector("#eventDescription").value = event.event,
-        document.querySelector("#eventLocation").value = event.location })
-    }
-
-    function clearForm() {
-        hiddenEventId.value = "",
-        eventDate.value = "",
-        eventBody.value = "",
-        eventLocation.value = ""
-    } 
-
+const repopulateForm = (eventId) => {
+  fetch(`http://localhost:3000/events/${eventId}`)
+    .then((events) => events.json())
+    .then((event) => {
+      (document.querySelector("#eventId").value = event.id),
+        (document.querySelector("#eventDate").value = event.date),
+        (document.querySelector("#eventDescription").value = event.event),
+        (document.querySelector("#eventLocation").value = event.location);
+    });
+};
 
 events_container.addEventListener("click", (event) => {
   if (event.target.id.startsWith("edit--")) {
@@ -49,9 +33,10 @@ events_container.addEventListener("click", (event) => {
   }
   if (event.target.id.startsWith("delete--")) {
     const eventId = event.target.id.split("--")[1];
-    API.deleteEvents(eventId)
-    .then(getAndRenderAllEvents);
+    API.deleteEvents(eventId).then(getAndRenderAllEvents);
   }
 });
+
+
 
 export default getAndRenderAllEvents;

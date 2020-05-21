@@ -2,44 +2,33 @@ import API from "./eventsFetch.js"
 import render from "./eventsRender.js"
 import makeEventsForm from "./eventsForm.js"
 
-const eventsContainer = document.querySelector(".eventListContainer")
+// const eventsContainer = document.querySelector(".eventListContainer")
 
     
-    const eventsToDom = (parsedEvents) => {
-        eventsContainer.innerHTML = ""
-        parsedEvents.forEach(event => eventsContainer.innerHTML += render.makeEventEntry(event))
-        makeEventsForm()
+//     const eventsToDom = (parsedEvents) => {
+//         eventsContainer.innerHTML = ""
+//         parsedEvents.forEach(event => eventsContainer.innerHTML += render.makeEventEntry(event))
+//         makeEventsForm()
 
 
-    }
-    const eventFormContainer = document.querySelector(".eventFormContainer")
-    eventFormContainer.addEventListener("click", (event) => {
-        if(event.target.id==="saveButton") {
-           const eventSaveObj = {
-               date: document.querySelector("#eventDate").value,
-               event: document.querySelector("#eventDescription").value,
-               location: document.querySelector("#eventLocation").value
-            }
-            API.createNewEvent(eventSaveObj)
-        }
-    })
+//     }
+//     const eventFormContainer = document.querySelector(".eventFormContainer")
+//     eventFormContainer.addEventListener("click", (event) => {
+//         if(event.target.id==="saveButton") {
+//            const eventSaveObj = {
+//                date: document.querySelector("#eventDate").value,
+//                event: document.querySelector("#eventDescription").value,
+//                location: document.querySelector("#eventLocation").value
+//             }
+//             API.createNewEvent(eventSaveObj)
+//         }
+//     })
 
-API.getEvents().then(eventsToDom)
+// API.getEvents().then(eventsToDom)
 
-const formContainer = document.querySelector(".eventFormContainer")
+// const formContainer = document.querySelector(".eventFormContainer")
 
-const eventEdit = id => {
-    const eventEditObj = {
-        date: document.querySelector("#eventDate").value,
-        event: document.querySelector("#eventDescription").value,
-        location: document.querySelector("#eventLocation").value
-    }
 
-    API.editEvents(eventEditObj, id)
-       .then(() => (document.getElementById("#eventId").value = ""))  
-       .then(() =>API.getAndRenderAllEvents) //put in eventsList
-       
-    }
 /*
 formContainer.addEventListener("click", () => {
     const date = document.querySelector("#journalDate").value 
