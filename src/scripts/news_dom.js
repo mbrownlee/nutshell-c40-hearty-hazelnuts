@@ -3,11 +3,11 @@ import component from "./news_component.js"
 const newsSection = document.querySelector("#news")
 
 const addNewsHeader = () => {
-    document.querySelector("#news").innerHTML = component.createNewsHeader()
+    document.getElementById("news").innerHTML = component.createNewsHeader()
 }
 
 const showNewsTaskForm = () => {
-    document.querySelector("#news").innerHTML = component.createAddNewsForms()
+    document.getElementById("news").innerHTML = component.createAddNewsForm()
 }
 
 const removeNewsTaskForm = () => {

@@ -28,23 +28,27 @@ const API = {
     return fetch(`http://localhost:3000/news`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify/(newsObject),
-    }).then((data) => data.json());
+      body: JSON.stringify(newsObject),
+    })
   },
   deleteNews (newsId){
-    return fetch(`http://localhost:3000/news`, {
+    return fetch(`http://localhost:3000/news/${newsId}`, {
       method: "Delete"
     }).then((data) => data.json());
+  },
+  getNewsById (newsId){
+    return fetch (`http://localhost:3000/news/${newsId}`)
+    .then(data => data.json())
   },
   editNews (newsObject, newsId){
     return fetch(`http://localhost:3000/news/${newsId}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify/(newsObject),
+      body: JSON.stringify(newsObject),
     }).then((data) => data.json());
   },
 };
