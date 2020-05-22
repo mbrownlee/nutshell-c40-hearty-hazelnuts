@@ -8,6 +8,7 @@ import welcome from "./welcome.js"
 import news from "./news_main.js"
 import messages from "./messages.js"
 
+
 const loggedUserId = sessionStorage.getItem("loggedUser");
 if (loggedUserId === null) {
   welcome.welcome();
@@ -27,3 +28,4 @@ if (loggedUserId === null) {
   // rendering messages, ZN - can't get this to work, have to leave functions called in messages.js
   // messages.renderInitialSection();
   // messages.getAndRenderMesages();
+}

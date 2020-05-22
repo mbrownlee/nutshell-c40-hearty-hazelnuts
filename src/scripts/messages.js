@@ -1,6 +1,12 @@
-//Fetching the messages from the database
+/* Nutshell Messages Section
+Author: Tom Strother
+Date: May 22nd, 2020
+*/
+
+//declaring the variable loggedUserId to store the ID value of the user currently logged in
 const loggedUserId = +sessionStorage.getItem("loggedUser");
 
+//Fetch Functions for the CRUD functions
 const API = {
   getMessages() {
     return fetch(
@@ -37,13 +43,14 @@ const API = {
   },
 };
 
-//Defining Messages Section in index.html
+//Defining Messages Section in DOM on index.html
 const messageSection = document.querySelector(".messages");
-//making a message from the fetch call
+
+//function to build a message
 const makeMessageComponent = (messageData) => {
   let editButton = showCrudButton(messageData);
   return `
-  <section class="userMessage">
+  <section class="userMessage sb1">
   <input type="hidden" id="message--${messageData.id}" value="${messageData.description}" /> 
   <input type="hidden" id="userId--${messageData.userId}"/> 
   <div class="hidden editMessage--${messageData.id}">
@@ -56,7 +63,7 @@ const makeMessageComponent = (messageData) => {
   </section>`;
 };
 
-//Making entire message Container and adding spot for database messages to go into when called
+//function creating the initial message Container upon user login
 function renderInitialSection() {
   messageSection.innerHTML = `<section class="messagesContainer">
   <div class="databaseMessages"></div>
@@ -74,16 +81,17 @@ function renderInitialSection() {
   </section>
   `;
 }
-//---------------------calling the initial build for the messages section
+
+//calling the initial message Container upon user login
 renderInitialSection();
 
-//Rendering Database Messages to their section in DOM
+//Function rendering Database Messages to their section in DOM
 const databaseMessageContainer = document.querySelector(".databaseMessages");
 function renderMessageToDOM(htmlMessage) {
   databaseMessageContainer.innerHTML += htmlMessage;
 }
 
-//Get all messages already existing in the database
+//Get all messages already existing in the database upon user login
 let messageId = "";
 const getAndRenderMesages = () => {
   databaseMessageContainer.innerHTML = "";
@@ -94,10 +102,10 @@ const getAndRenderMesages = () => {
   });
 };
 
-// -------------------Executing the function to get all messages existing in the database
+//Executing the function to get all messages existing in the database upon user login
 getAndRenderMesages();
 
-//Function and Button Event Listeners for Creating and Sending
+//Event Listeners for the buttons associated with Creating and Sending
 const sendButtonListener = document.querySelector("#message_send_btn");
 sendButtonListener.addEventListener("click", (event) => {
   let userMessageId = loggedUserId;
@@ -111,8 +119,6 @@ sendButtonListener.addEventListener("click", (event) => {
   API.saveMessageEntry(newMessageEntry).then(getAndRenderMesages);
 });
 
-// API.getMessages().then((data) => renderJournalEntries(data))
-
 // Factory Function to build a new message entry
 const buildMessageComponent = (messageId, userMessageId, description) => ({
   id: messageId,
@@ -120,12 +126,12 @@ const buildMessageComponent = (messageId, userMessageId, description) => ({
   description: description,
 });
 
-//Values need for editing the message
+//Values needed for editing the message
 const formMessageId = document.getElementById("entryId");
 const formMessageUserId = document.getElementById("date");
 const formDescription = document.getElementById("concept");
 
-// function to prepopulate the edit message form
+// function to prepopulate the edit message form when editing
 function prepopulateForm(message) {
   formId.value = message.id;
   formUserId.value = message.userId;
@@ -156,6 +162,7 @@ messageSection.addEventListener("click", (event) => {
   }
 });
 
+// Event Listener to hide the initial message when the edit button is clicked. Then making the edit box visible
 messageSection.addEventListener("click", (event) => {
   if (event.target.id.startsWith("edit--")) {
     const editBtnId = event.target.id.split("--")[1];
@@ -168,6 +175,7 @@ messageSection.addEventListener("click", (event) => {
   }
 });
 
+// Event listener for the save button after editing the message text
 messageSection.addEventListener("click", (event) => {
   if (event.target.id.startsWith("message_saveEdit_btn--")) {
     const editBtnId = event.target.id.split("--")[1];
@@ -183,13 +191,13 @@ messageSection.addEventListener("click", (event) => {
     );
   }
 });
-
+// function that returns HTML respresentaton of the edit and delete buttons only for messages that the person who is logged in creates.
 const showCrudButton = (message) => {
   if (loggedUserId == message.userId) {
     return `
-    <div class="">
-    <button id="edit--${message.id}" class="message_edit_btn">edit</button>
-    <button id="delete--${message.id}" class="message_delete_btn">delete</button>
+    <div class="btmright">
+    <button class="lightBlue" id="edit--${message.id}" class="message_edit_btn">edit</button>
+    <button class="redBG" id="delete--${message.id}" class="message_delete_btn">delete</button>
     </div>`;
   } else {
     return "";

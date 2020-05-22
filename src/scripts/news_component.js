@@ -15,7 +15,7 @@ const createCurrentNews = (news) => {
     <input type="hidden" id="newsId" value="" />
     <h1>${news.title}</h1>
     <p>${news.description}</p>
-    <p>${news.url}</p>
+    <p><a href = ${news.url}>${news.url}</a></p>
     <p>${news.synopsis}</p>
     <p>${news.timestamp}</p>
     <button class="delete_news" id="delete-${news.id}">Delete</button>

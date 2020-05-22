@@ -15,20 +15,13 @@ var datetime = "Last Updated: " + currentdate.getDate() + "/"
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
 
-<<<<<<< HEAD
-//initial render of News Section                
+//initial render of News Section 
+function makeNews(){               
 dom.addNewsHeader()
 API.getNews()
-    .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
+.then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
+}
 //Function to edit news article
-=======
-    const makeNews = () =>{
-        dom.addNewsHeader()
-        API.getNews()
-        .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
-    }
-
->>>>>>> master
     const newsEdit = (newsObject, newsId) => {
         newsId = parseInt(newsId);
         return API.editNews(newsObject, newsId)
