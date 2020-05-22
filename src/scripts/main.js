@@ -3,7 +3,7 @@ import makeEventsForm from "./eventsForm.js"
 import './tasks_main.js'
 import "./news_main.js"
 import userEvents from "./userEvents.js";
-import "./users.js";
+import "./user_components.js";
 import "./messages.js";
 
 const loggedUserId = sessionStorage.getItem("loggedUser");

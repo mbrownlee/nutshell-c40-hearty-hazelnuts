@@ -1,3 +1,6 @@
+// Author: Brian Cravens
+// Html components for News Section
+
 const loggedUserId = sessionStorage.getItem("loggedUser");
 
 const createNewsHeader = () => {
