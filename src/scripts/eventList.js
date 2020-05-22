@@ -1,6 +1,9 @@
 import API from "./eventsFetch.js";
 import makeEventEntry from "./eventsRender.js";
-
+/*
+    Author: Michelle McLane Brownlee
+    Purpose: Make the event list, event listeners for edit and delete buttons
+*/
 const events_container = document.querySelector(".eventListContainer");
 
 function getAndRenderAllEvents() {

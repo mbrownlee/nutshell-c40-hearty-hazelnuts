@@ -1,0 +1,54 @@
+body{
+    background-image: linear-gradient(to right,rgb(168, 197, 168) ,rgb(197, 197, 247));
+}
+
+.navigation {
+
+    display: flex;
+    height: 60px;
+    border-style: solid;
+    border-color: black;
+    justify-content: center;
+    font-size: x-large;
+}
+
+
+.rightside_container {
+   flex-basis: 60%;
+    display: flex;
+    padding: 5%;
+    flex-direction: column;
+    
+}
+
+.leftside_container {
+    flex-basis: 35%;
+    display: flex;
+    padding: 5%;
+    flex-direction: row;
+}
+
+.eventListContainer :first-child {
+    color: purple;
+    font-weight: 700;
+}
+
+.eventListContainer {
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    
+}
+.article_container {
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+}
+.task_container {
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+}
+
+
+
