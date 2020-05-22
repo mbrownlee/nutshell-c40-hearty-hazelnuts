@@ -1,19 +1,45 @@
 .messagesContainer {
-  background-color: lightgrey;
+  background-color: rgb(1, 1, 53);
   border: solid black 2px;
   padding: 8px;
 }
 
 .userMessage {
-  text-align: left;
+  /* text-align: left;
   background-color: white;
   color: black;
-  font-family: Helvetica Neue;
+  font-family: Helvetica;
   padding: 10px;
   margin: 2px;
   border: solid black 2px;
   border-radius: 2px;
-  box-shadow: 10px 10px 65px;
+  box-shadow: 10px 10px 65px; */
+  width: 300px;
+  margin: 50px auto;
+  background: #00bfb6;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  font-family: arial;
+  position: relative;
+  box-shadow: 4px 4px 25px rgb(163, 163, 163);
+}
+
+.sb1:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #00bfb6;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  right: -20px;
+  top: 6px;
+}
+.btmright {
+  display: flex;
 }
 
 .hidden {

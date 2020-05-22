@@ -43,7 +43,7 @@ const messageSection = document.querySelector(".messages");
 const makeMessageComponent = (messageData) => {
   let editButton = showCrudButton(messageData);
   return `
-  <section class="userMessage">
+  <section class="userMessage sb1">
   <input type="hidden" id="message--${messageData.id}" value="${messageData.description}" /> 
   <input type="hidden" id="userId--${messageData.userId}"/> 
   <div class="hidden editMessage--${messageData.id}">
@@ -187,7 +187,7 @@ messageSection.addEventListener("click", (event) => {
 const showCrudButton = (message) => {
   if (loggedUserId == message.userId) {
     return `
-    <div class="">
+    <div class="btmright">
     <button class="lightBlue" id="edit--${message.id}" class="message_edit_btn">edit</button>
     <button class="redBG" id="delete--${message.id}" class="message_delete_btn">delete</button>
     </div>`;
