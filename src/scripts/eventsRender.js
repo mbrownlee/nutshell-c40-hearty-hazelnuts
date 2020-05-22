@@ -1,4 +1,7 @@
-
+/*
+    Author: Michelle McLane Brownlee
+    Purpose: makes the entry HTML for the dom
+*/
 const makeEventEntry = (event) => {
     
     return `

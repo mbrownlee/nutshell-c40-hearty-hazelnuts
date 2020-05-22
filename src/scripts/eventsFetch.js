@@ -1,4 +1,7 @@
-
+/*
+    Author: Michelle McLane Brownlee
+    Purpose: all fetch calls for events
+*/
 const API = {
     getEvents() {
       return fetch("http://localhost:3000/events") 
