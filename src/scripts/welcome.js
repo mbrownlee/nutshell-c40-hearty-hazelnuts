@@ -1,3 +1,4 @@
+// ZN Inserts welcome screen background video
 const createWelcomeVideo = () => {
     let vidContainer = document.createElement('div')
     vidContainer.className = "video_container"
@@ -8,6 +9,7 @@ const createWelcomeVideo = () => {
     document.body.prepend(vidContainer)
 }
 
+// ZN, BC Creates welcome component
 const createWelcome = () => {
     return `
     <h1 class="welcome_header">🌰 Welcome to Nutshell 🌰</h1>
@@ -16,11 +18,13 @@ const createWelcome = () => {
     `
 }
 
+// BC Inserts welcome into HTML
 const renderWelcome = (HTML) => {
     const dashboardContainer = document.getElementById('dashboard')
     dashboardContainer.innerHTML = HTML;
 }
 
+// ZN Exported function to completely render Welcome page
 const welcome = () => {
     createWelcomeVideo();
     renderWelcome(createWelcome());
