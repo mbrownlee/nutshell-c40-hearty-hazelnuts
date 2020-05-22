@@ -195,3 +195,5 @@ const showCrudButton = (message) => {
     return "";
   }
 };
+
+export default { renderInitialSection, getAndRenderMesages }
