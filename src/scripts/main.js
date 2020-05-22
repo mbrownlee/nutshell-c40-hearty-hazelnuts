@@ -1,3 +1,5 @@
+// BC, MM, TS, ZN Importing relevant pages and displaying either welcome page or logged-in user's home page
+
 import getAndRenderAllEvents from "./eventList.js"
 import makeEventsForm from "./eventsForm.js"
 import tasks from './tasks_main.js'

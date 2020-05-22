@@ -1,3 +1,5 @@
+// ZN Inserting task components into DOM
+
 import component from './tasks_component.js'
 
 const taskSection = document.querySelector('.tasks')
@@ -15,9 +17,13 @@ const removeNewTaskForm = () => {
     newTaskForm.parentElement.removeChild(newTaskForm)
 }
 
-const showCurrentTasks = (tasks) => {
+const clearTasks = () => {
     Array.from(taskSection.getElementsByClassName('task_current_card')).forEach(card => card.parentElement.removeChild(card))
     Array.from(taskSection.getElementsByClassName('task_complete_card')).forEach(card => card.parentElement.removeChild(card))
+}
+
+const showCurrentTasks = (tasks) => {
+    clearTasks();
     tasks.filter(task => task.complete === false).forEach(current => {
         let taskCard = document.createElement('div')
         taskCard.className = "task_current_card"
@@ -27,8 +33,7 @@ const showCurrentTasks = (tasks) => {
 }
 
 const showCompletedTasks = (tasks) => {
-    Array.from(taskSection.getElementsByClassName('task_current_card')).forEach(card => card.parentElement.removeChild(card))
-    Array.from(taskSection.getElementsByClassName('task_complete_card')).forEach(card => card.parentElement.removeChild(card))
+    clearTasks();
     tasks.filter(task => task.complete === true).forEach(complete => {
         let taskCard = document.createElement('div')
         taskCard.className = "task_complete_card"
