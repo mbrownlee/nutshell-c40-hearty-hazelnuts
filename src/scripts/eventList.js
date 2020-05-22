@@ -6,10 +6,13 @@ const events_container = document.querySelector(".eventListContainer");
 function getAndRenderAllEvents() {
   events_container.innerHTML = "";
   API.getEvents().then((parsedEvents) => {
-    parsedEvents.forEach((event) => {
-      const eventHTML = makeEventEntry(event);
-      events_container.innerHTML += eventHTML;
-    });
+    console.log(parsedEvents, "events");
+    parsedEvents
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .forEach((event) => {
+        const eventHTML = makeEventEntry(event);
+        events_container.innerHTML += eventHTML;
+      });
   });
 }
 
@@ -35,7 +38,5 @@ events_container.addEventListener("click", (event) => {
     API.deleteEvents(eventId).then(getAndRenderAllEvents);
   }
 });
-
-
 
 export default getAndRenderAllEvents;

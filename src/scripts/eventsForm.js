@@ -23,6 +23,7 @@ eventFormContainer.addEventListener("click", (event) => {
       clearForm()
     } else {
       API.createNewEvent(eventSaveObj).then(getAndRenderAllEvents)
+      clearForm()
     }
     
   }
