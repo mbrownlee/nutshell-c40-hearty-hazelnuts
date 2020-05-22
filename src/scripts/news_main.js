@@ -9,9 +9,12 @@ var datetime = "Last Updated: " + currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-dom.addNewsHeader()
-API.getNews()
-    .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
+
+    const makeNews = () =>{
+        dom.addNewsHeader()
+        API.getNews()
+        .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
+    }
 
     const newsEdit = (newsObject, newsId) => {
         newsId = parseInt(newsId);
@@ -106,3 +109,5 @@ API.getNews()
     }
 
 })
+
+export default { makeNews }
