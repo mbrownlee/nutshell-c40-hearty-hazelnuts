@@ -1,12 +1,12 @@
 @import 'welcome.css';
 @import 'tasks.css';
-
-html, body {
+/* zach css suggests
+*/
+/* html, body {
     height: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
   
 body {
-    margin: 0;
     line-height: 1.5rem;
-}
+} */
