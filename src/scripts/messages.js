@@ -188,8 +188,8 @@ const showCrudButton = (message) => {
   if (loggedUserId == message.userId) {
     return `
     <div class="">
-    <button id="edit--${message.id}" class="message_edit_btn">edit</button>
-    <button id="delete--${message.id}" class="message_delete_btn">delete</button>
+    <button class="lightBlue" id="edit--${message.id}" class="message_edit_btn">edit</button>
+    <button class="redBG" id="delete--${message.id}" class="message_delete_btn">delete</button>
     </div>`;
   } else {
     return "";
