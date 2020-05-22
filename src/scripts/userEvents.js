@@ -39,6 +39,7 @@ loginContainer.addEventListener("click", (event) => {
           let loggedUser = sessionStorage.getItem(`loggedUser`);
           console.log("Session Stored", loggedUser);
           dashboardContainer.innerHTML = "";
+          location.reload()
         } else {
           clearForm();
           window.alert("Username and password do not match");
