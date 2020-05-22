@@ -6,9 +6,9 @@ import getAndRenderAllEvents from "./eventList.js";
 */
 const eventEdit = (id, eventObj) => {
   id = parseInt(id);
-  return API.editEvents(eventObj, id)
-    .then(() => (document.querySelector("#eventId").value = ""))
-    
+  return API.editEvents(eventObj, id).then(
+    () => (document.querySelector("#eventId").value = "")
+  );
 };
 
 const eventFormContainer = document.querySelector(".eventFormContainer");
@@ -22,13 +22,12 @@ eventFormContainer.addEventListener("click", (event) => {
       location: document.querySelector("#eventLocation").value,
     };
     if (eventId !== "") {
-      eventEdit(eventId, eventSaveObj).then(getAndRenderAllEvents)
-      clearForm()
+      eventEdit(eventId, eventSaveObj).then(getAndRenderAllEvents);
+      clearForm();
     } else {
-      API.createNewEvent(eventSaveObj).then(getAndRenderAllEvents)
-      clearForm()
+      API.createNewEvent(eventSaveObj).then(getAndRenderAllEvents);
+      clearForm();
     }
-    
   }
 });
 
@@ -53,10 +52,9 @@ const makeEventsForm = () => {
 };
 
 function clearForm() {
-    document.querySelector("#eventId").value = ""
-    document.querySelector("#eventDate").value = "",
-    document.querySelector("#eventDescription").value = "",
-    document.querySelector("#eventLocation").value = ""
-
-} 
+  document.querySelector("#eventId").value = "";
+  (document.querySelector("#eventDate").value = ""),
+    (document.querySelector("#eventDescription").value = ""),
+    (document.querySelector("#eventLocation").value = "");
+}
 export default makeEventsForm;
