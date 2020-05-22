@@ -59,17 +59,13 @@ API.getNews()
             window.alert("Please Fill Out All Fields")
 
             }if(newsId !== ""){
-                
                     API.editNews(newNews, newsId)
                     dom.removeNewsTaskForm()
                     dom.addNewsHeader()
                     location.reload()
                     .then( () => API.getNews())
                     .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
-                
-                
             }else{
-                console.log(newsId)
                 API.saveNews(newNews)
                 .then(() => {
                     dom.removeNewsTaskForm()
@@ -86,7 +82,6 @@ API.getNews()
             API.getNews()
                 .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
 
-
     }else if (targetId.startsWith("edit-")){
         API.getNewsById(event.target.id.split('-')[1])
             .then(news => {
@@ -102,8 +97,6 @@ API.getNews()
                 prepopulateForm(news)
             })
         
-        
-
     }else if (event.target.id.startsWith("delete-")){
         API.deleteNews(event.target.id.split('-')[1])
         .then( () => API.getNews())
