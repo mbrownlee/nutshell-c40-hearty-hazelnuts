@@ -11,12 +11,15 @@ const createLogin = document.getElementById("createAccount");
 const loginBtn = document.getElementById("login");
 const loginContainer = document.getElementById("log_me_in");
 
+<<<<<<< HEAD
 //function for rendering welcome page
 const welcome = () => {
   const displayWelcome = users.createWelcome();
   users.renderWelcome(displayWelcome);
 };
 
+=======
+>>>>>>> master
 //Event Listener for Login
 loginContainer.addEventListener("click", (event) => {
   event.preventDefault();
@@ -99,5 +102,3 @@ createLoginContainer.addEventListener("click", (event) => {
     });
   }
 });
-
-export default { welcome };
