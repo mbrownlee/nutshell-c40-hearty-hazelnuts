@@ -2,13 +2,48 @@ body{
     background-image: linear-gradient(to right,rgb(168, 197, 168) ,rgb(197, 197, 247));
 }
 
-.rightside_container {
+.navigation {
     display: flex;
-    flex-direction: row;
+    height: 60px;
+    border-style: solid;
+    border-color: black;
+    justify-content: center;
+}
+
+
+.rightside_container {
+   flex-basis: 60%;
+    display: flex;
+    padding: 5%;
+    flex-direction: column;
+    
 }
 
 .leftside_container {
+    flex-basis: 35%;
     display: flex;
-    flex-direction: column;
+    padding: 5%;
+    flex-direction: row;
 }
+
+.eventListContainer :first-child {
+    color: purple;
+    font-weight: 700;
+}
+
+.eventListContainer {
+    border-style: solid;
+    border-color: black;
+    
+}
+.article_container {
+    border-style: solid;
+    border-color: black;
+}
+.task_container {
+    border-style: solid;
+    border-color: black;
+}
+
+
 

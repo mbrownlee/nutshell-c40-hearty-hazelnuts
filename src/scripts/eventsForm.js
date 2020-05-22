@@ -1,6 +1,9 @@
 import API from "./eventsFetch.js";
 import getAndRenderAllEvents from "./eventList.js";
-
+/*
+    Author: Michelle McLane Brownlee
+    Purpose: Make the event form, clear form, event listener for save button, fuction to edit form
+*/
 const eventEdit = (id, eventObj) => {
   id = parseInt(id);
   return API.editEvents(eventObj, id)
