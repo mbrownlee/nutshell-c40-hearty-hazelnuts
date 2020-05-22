@@ -2,14 +2,11 @@
 
 import getAndRenderAllEvents from "./eventList.js"
 import makeEventsForm from "./eventsForm.js"
-import './tasks_main.js'
-import "./user_components.js";
-import "./messages.js";
 import tasks from './tasks_main.js'
 import "./userEvents.js"
 import welcome from "./welcome.js"
 import news from "./news_main.js"
-// import messages from "./messages.js"
+import messages from "./messages.js"
 
 const loggedUserId = sessionStorage.getItem("loggedUser");
 if (loggedUserId === null) {
@@ -30,4 +27,3 @@ if (loggedUserId === null) {
   // rendering messages, ZN - can't get this to work, have to leave functions called in messages.js
   // messages.renderInitialSection();
   // messages.getAndRenderMesages();
-}
