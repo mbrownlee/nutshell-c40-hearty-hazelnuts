@@ -3,7 +3,7 @@ import dom from "./news_dom.js"
 const loggedUserId = sessionStorage.getItem("loggedUser");
 const newsSection = document.querySelector("#news")
 var currentdate = new Date(); 
-var datetime = "Last Sync: " + currentdate.getDate() + "/"
+var datetime = "Last Updated: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  
@@ -56,15 +56,17 @@ API.getNews()
             "timestamp": datetime
         }
         if (title === "" || description === "" || synopsis === "" || url === "" || timestamp === ""){
-            window.alert("Please Fill Out All Fields")
+            return window.alert("Please Fill Out All Fields")
 
             }if(newsId !== ""){
                     API.editNews(newNews, newsId)
-                    dom.removeNewsTaskForm()
-                    dom.addNewsHeader()
-                    location.reload()
-                    .then( () => API.getNews())
-                    .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
+                    .then(() => {
+                        dom.removeNewsTaskForm()
+                        dom.addNewsHeader()
+                        location.reload()
+                        .then( () => API.getNews())
+                        .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
+                    })
             }else{
                 API.saveNews(newNews)
                 .then(() => {
