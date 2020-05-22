@@ -10,15 +10,7 @@ const users = {
     <input type="text" id="createEmail" placeholder="email">
     <button id="createUserBtn">Create Account</button>
     </div>`;
-  },
-
-  createWelcome() {
-    return `
-    <h1>Welcome to Nutshell!</h1>`;
-  },
-  renderWelcome(HTML) {
-    dashboardContainer.innerHTML = HTML;
-  },
+  }
 };
 
 export default users;

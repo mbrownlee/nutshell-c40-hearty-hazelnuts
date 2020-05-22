@@ -1,3 +1,5 @@
+// ZN Fetch requests for tasks section
+
 const tasks_api = {
     getTasks() {
         return fetch('http://localhost:3000/tasks')
