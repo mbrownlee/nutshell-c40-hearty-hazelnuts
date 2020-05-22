@@ -1,3 +1,6 @@
+//Author: Brian Cravens
+// dom manipulation for News Section
+
 import component from "./news_component.js"
 
 const newsSection = document.querySelector("#news")

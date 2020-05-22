@@ -8,6 +8,7 @@ import welcome from "./welcome.js"
 import news from "./news_main.js"
 import messages from "./messages.js"
 
+
 const loggedUserId = sessionStorage.getItem("loggedUser");
 if (loggedUserId === null) {
   welcome.welcome();

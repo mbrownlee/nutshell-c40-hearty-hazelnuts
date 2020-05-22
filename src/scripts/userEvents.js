@@ -1,4 +1,8 @@
-import users from "./users.js";
+//Author: Brian Cravens
+// Event Listeners for login and creating users
+// Creating Session Storage
+
+import users from "./user_components.js";
 import API from "./api.js";
 
 const dashboardContainer = document.getElementById("dashboard");
@@ -6,6 +10,12 @@ const createLoginContainer = document.getElementById("createAccountForm");
 const createLogin = document.getElementById("createAccount");
 const loginBtn = document.getElementById("login");
 const loginContainer = document.getElementById("log_me_in");
+
+//function for rendering welcome page
+const welcome = () => {
+  const displayWelcome = users.createWelcome();
+  users.renderWelcome(displayWelcome);
+};
 
 //Event Listener for Login
 loginContainer.addEventListener("click", (event) => {
@@ -50,12 +60,13 @@ createLoginContainer.addEventListener("click", (event) => {
   const createEmail = document.getElementById("createEmail");
   event.preventDefault();
   let targetElement = event.target;
+  //function to clear user form
   function clearForm() {
     createUsername.value = "";
     createEmail.value = "";
     createPassword.value = "";
   }
-
+//variable to retain user info
   const userValues = {
     username: createUsername.value,
     email: createEmail.value,

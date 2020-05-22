@@ -1,3 +1,6 @@
+//Author: Brian Cravens
+// Api manager for users, and News 
+
 const API = {
   createUser(userObject) {
     return fetch("http://localhost:3000/users", {

@@ -1,7 +1,12 @@
+//Author: Brian Cravens
+// Event Listeners for News Section
+
 import API from "./api.js"
 import dom from "./news_dom.js"
 const loggedUserId = sessionStorage.getItem("loggedUser");
 const newsSection = document.querySelector("#news")
+
+//variables for creating timestamp
 var currentdate = new Date(); 
 var datetime = "Last Updated: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
@@ -10,17 +15,19 @@ var datetime = "Last Updated: " + currentdate.getDate() + "/"
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
 
-    const makeNews = () =>{
-        dom.addNewsHeader()
-        API.getNews()
-        .then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
-    }
-
+//initial render of News Section 
+function makeNews(){               
+dom.addNewsHeader()
+API.getNews()
+.then(news => dom.showNews(news.filter(news => news.userId == loggedUserId)))
+}
+//Function to edit news article
     const newsEdit = (newsObject, newsId) => {
         newsId = parseInt(newsId);
         return API.editNews(newsObject, newsId)
             .then(() => (document.getElementById("newsId").value = ""))
     }
+    //function to populate form for edit
     function prepopulateForm (news) {
         dom.addNewsHeader()
         dom.showNewsTaskForm()

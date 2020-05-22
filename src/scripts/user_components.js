@@ -1,3 +1,5 @@
+//Author: Brian Cravens
+// Html components for the Welcome page and creating users.
 const dashboardContainer = document.getElementById("dashboard");
 
 const users = {
