@@ -3,11 +3,13 @@ body{
 }
 
 .navigation {
+
     display: flex;
     height: 60px;
     border-style: solid;
     border-color: black;
     justify-content: center;
+    font-size: x-large;
 }
 
 
