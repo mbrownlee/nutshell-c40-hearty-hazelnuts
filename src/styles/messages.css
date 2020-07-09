@@ -1,7 +1,7 @@
 /* styling for the messages section only */
 
 .messagesContainer {
-  background-color: rgb(1, 1, 53);
+  background-color: rgb(76, 76, 168);
   border: solid black 2px;
   padding: 8px;
 }
@@ -18,7 +18,7 @@
   box-shadow: 10px 10px 65px; */
   width: 300px;
   margin: 50px auto;
-  background: #00bfb6;
+  background: #5e9c99;
   padding: 20px;
   text-align: center;
   font-weight: 900;
@@ -33,9 +33,9 @@
   width: 0px;
   height: 0px;
   position: absolute;
-  border-left: 10px solid #00bfb6;
+  border-left: 10px solid #5e9c99;
   border-right: 10px solid transparent;
-  border-top: 10px solid #00bfb6;
+  border-top: 10px solid #5e9c99;
   border-bottom: 10px solid transparent;
   right: -20px;
   top: 6px;

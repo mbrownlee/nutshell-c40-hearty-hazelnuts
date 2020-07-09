@@ -1,0 +1,97 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Example User",
+      "email": "example@example.com",
+      "password": "example"
+    },
+    {
+      "username": "Michelle",
+      "email": "m@m.com",
+      "password": "1234",
+      "id": 2
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "description": "This is an example message."
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "userId": 1,
+      "description": "Example News Description",
+      "url": "url",
+      "title": "Example News Title",
+      "synopsis": "This is an example.",
+      "timestamp": "Wed, 27 July 2020 13:30:00"
+    },
+    {
+      "userId": 2,
+      "description": "weather article",
+      "url": "www.nytimes.com",
+      "title": "No Drought this Summer!",
+      "synopsis": "We've had rain",
+      "timestamp": "Last Updated: 9/7/2020 @ 16:9:47",
+      "id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "userId": 1,
+      "title": "Completed Task Example",
+      "description": "This task is completed.",
+      "compDate": "2001-05-16",
+      "complete": true,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "title": "Incomplete Task Example",
+      "description": "This task is yet to be finished.",
+      "compDate": "2030-12-25",
+      "complete": false,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "title": "Paint the porch",
+      "description": "porch needs painted",
+      "compDate": "2020-07-11",
+      "complete": false,
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "title": "Repair Sink",
+      "description": "Hot water is leaking",
+      "compDate": "2020-07-10",
+      "complete": false,
+      "id": 4
+    }
+  ],
+  "events": [
+    {
+      "date": "2020-05-20",
+      "event": "BBQ",
+      "location": "Michelle's House",
+      "id": 1
+    },
+    {
+      "date": "2020-07-17",
+      "event": "Python Party",
+      "location": "NSS",
+      "id": 2
+    },
+    {
+      "date": "2020-07-22",
+      "event": "Web Party",
+      "location": "Here",
+      "id": 3
+    }
+  ]
+}
